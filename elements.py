@@ -77,7 +77,6 @@ class Integers(AbstractElement):
         return self._tokens[idx]
 
 
-# TODO: List of any element type (other list or fixed values)
 class List(AbstractElement):
     PREFERRED_NAMES = ['l'] + Integer.PREFERRED_NAMES
 
@@ -119,3 +118,21 @@ class List(AbstractElement):
     @rec_elements
     def elements(self):
         yield self._token
+
+
+class Compound(AbstractElement):
+    def __init__(self, elems):
+        self._elems = elems
+
+    def parse(self, testcase: Parser):
+        for e in self._elems:
+            if not e.parse(testcase):
+                return False
+        return True
+
+    def generate(self):
+        return '\n'.join(e.generate() for e in self._elems)
+
+    @rec_elements
+    def elements(self):
+        return self._elems

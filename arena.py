@@ -1,24 +1,28 @@
-from elements import List, Integers, Integer
+from elements import List, Integer, Compound
 from language import code
 
 # Build pattern
 pattern = code()
-a = Integers(3)
-b = Integer()
-n = a[1]
-pattern.add(a)
-pattern.add(List(n, b))
+t = Integer()
+n = Integer()
+l = List(n, Integer())
+f = List(t, Compound([n, l]))
+pattern.add(t)
+pattern.add(f)
 
 prog = pattern.compile()
 
 # Build testcases
 testcases = """
-2 1 4
-8
--
-3 2 5
-1
+2
+3
+1 2 3
 4
+1 2 3 4
+-
+1
+5
+1 2 3 4 5
 """
 
 tc = testcases.split('-\n')
@@ -28,9 +32,8 @@ prog.parse(tc)
 
 assert prog.ok
 
-# print(prog.generate())
-# exit(0)
-
+print(prog.generate())
+exit(0)
 
 # Print test
 print("""@example

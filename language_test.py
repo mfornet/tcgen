@@ -1,6 +1,6 @@
 import unittest
 
-from elements import Integer, Integers, List
+from elements import Integer, Integers, List, Compound
 from language import code
 from parser import Parser, ParserError
 
@@ -93,6 +93,22 @@ class TestLanguageBehavior(unittest.TestCase):
             testcases=['\n2 1 4\n8\n', '3 2 5\n1\n4\n'],
             expected='from random import randint\n\nn, m, k = randint(2, 3), randint(1, 2), randint(4, 5)\n'
                      'print(n, m, k)\n\nfor _ in range(m):\n    a = randint(1, 8)\n    print(a)\n'
+        )
+
+    @example
+    def test_compound(self, pattern):
+        t = Integer()
+        n = Integer()
+        l = List(n, Integer())
+        f = List(t, Compound([n, l]))
+        pattern.add(t)
+        pattern.add(f)
+
+        return dict(
+            testcases=['\n2\n3\n1 2 3\n4\n1 2 3 4\n', '1\n5\n1 2 3 4 5\n'],
+            expected='from random import randint\n\nn = randint(1, 2)\nprint(n)\n\n'
+                     'for _ in range(n):\n    m = randint(3, 5)\n    print(m)\n    for _ in range(m):\n'
+                     '        a = randint(1, 5)\n        print(a)\n'
         )
 
 

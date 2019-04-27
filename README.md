@@ -7,14 +7,7 @@ It is highly focused for test cases in competitive programming problems but can 
 
 ## Roadmap
 
-+ Make Python package (Installation and usage guide)
-+ CLI
-    Read from standard input one json file
-    Read json from file
-    Read folder containing .in
-
-    Output to stdout (or to folder with -o)
-
-+ Benchmark on codeforces.
 + Auto detect used separators.
++ Make Python package (Installation and usage guide)
++ Benchmark on codeforces.
 + Read description of the problem to find extra constraints on the input.

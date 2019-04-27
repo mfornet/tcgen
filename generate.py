@@ -7,11 +7,19 @@ print(a)
 """
 
 
+def find_pattern(testcase):
+    for prog in patterns:
+        if prog.parse(testcase):
+            return prog
+    return None
+
+
 # Simplest strategy.
 # Find first pattern that match.
-def generate(testcases):
-    for prog in patterns:
-        if prog.parse(testcases):
-            return prog.generate()
+def generate(testcase):
+    prog = find_pattern(testcase)
 
-    return DEFAULT
+    if prog is None:
+        return DEFAULT
+    else:
+        return prog.generate()
