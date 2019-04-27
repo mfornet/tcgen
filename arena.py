@@ -1,4 +1,4 @@
-from elements import List, Integer, Compound
+from elements import List, Integer, Compound, Integers
 from language import code
 
 # Build pattern

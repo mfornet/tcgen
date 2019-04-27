@@ -9,12 +9,17 @@ def register(builder):
     Convert pattern builder into compiled pattern.
     Keep __name__.
     """
+
     global patterns
-    pattern = code()
-    builder(pattern)
-    prog = pattern.compile()
-    prog.__name__ = builder.__name__
-    patterns.append(prog)
+
+    def lazy():
+        pattern = code()
+        builder(pattern)
+        prog = pattern.compile()
+        prog.__name__ = builder.__name__
+        return prog
+
+    patterns.append(lazy)
 
 
 @register
@@ -38,3 +43,10 @@ def simple_list(pattern):
 def list_head_2_body_3(pattern):
     a = pattern.add(Integers(2))
     pattern.add(List(a[0], Integers(3)))
+
+
+@register
+def head_2_list_2_list_1(pattern):
+    a = pattern.add(Integers(2))
+    pattern.add(List(a[1], Integers(2)))
+    pattern.add(List(a[0], Integer()))

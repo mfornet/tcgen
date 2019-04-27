@@ -8,7 +8,8 @@ print(a)
 
 
 def find_pattern(testcase):
-    for prog in patterns:
+    for prog_builder in patterns:
+        prog = prog_builder()
         if prog.parse(testcase):
             return prog
     return None
