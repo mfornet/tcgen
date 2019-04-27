@@ -1,6 +1,6 @@
 import unittest
 
-from elements import Integer, Integers, List, Compound, String
+from elements import Integer, List, Integers, Compound, String
 from language import code
 from parser import Parser, ParserError
 
