@@ -132,6 +132,12 @@ class TestParser(unittest.TestCase):
         with self.assertRaises(ParserError):
             p.token()
 
+    def test_end(self):
+        p = Parser("this is a token")
+        p._pointer = 14
+        token = p.token()
+        self.assertEqual(token, "n")
+
 
 if __name__ == '__main__':
     unittest.main()

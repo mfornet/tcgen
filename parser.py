@@ -23,14 +23,11 @@ class Parser:
 
     def token(self, allow_blank=True):
         if allow_blank:
-            if self.peek() is None:
-                raise ParserError("Token expected found blank char.")
-
-            while not self.is_readable(self.peek()):
+            while self.peek() is not None and self.peek() in Parser.BLANK:
                 self.get()
-        else:
-            if not self.is_readable(self.peek()):
-                raise ParserError("Token expected found blank char.")
+
+        if not self.is_readable(self.peek()):
+            raise ParserError("Token expected.")
 
         token = ""
 

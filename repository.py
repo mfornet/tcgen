@@ -1,4 +1,4 @@
-from elements import Integer, List
+from elements import Integer, List, Integers
 from language import code
 
 patterns = []
@@ -32,3 +32,9 @@ def two_int(pattern):
 def simple_list(pattern):
     a = pattern.add(Integer())
     pattern.add(List(a, Integer()))
+
+
+@register
+def list_head_2_body_3(pattern):
+    a = pattern.add(Integers(2))
+    pattern.add(List(a[0], Integers(3)))

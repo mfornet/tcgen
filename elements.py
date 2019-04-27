@@ -26,15 +26,22 @@ class Integer(AbstractElement):
         self.name = None
 
     def parse(self, testcase: Parser):
+        # Read next token
         try:
             value = testcase.token()
-            value = int(value)
-            self._min = min(self._min, value)
-            self._max = max(self._max, value)
-            self._last_value = value
-            return True
         except ParserError:
             return False
+
+        # Convert into integer
+        try:
+            value = int(value)
+        except ValueError:
+            return False
+
+        self._min = min(self._min, value)
+        self._max = max(self._max, value)
+        self._last_value = value
+        return True
 
     @fix_return_string
     def generate(self):
