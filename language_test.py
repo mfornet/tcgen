@@ -1,6 +1,6 @@
 import unittest
 
-from elements import Integer, Integers, List, Compound
+from elements import Integer, Integers, List, Compound, String
 from language import code
 from parser import Parser, ParserError
 
@@ -28,7 +28,7 @@ class TestLanguageBehavior(unittest.TestCase):
 
         return dict(
             testcases=["1\n", "2\n", "100\n"],
-            expected="from random import randint\n\nn = randint(1, 100)\nprint(n)\n",
+            expected="from random import randint, choice\n\nn = randint(1, 100)\nprint(n)\n",
         )
 
     @example
@@ -38,7 +38,8 @@ class TestLanguageBehavior(unittest.TestCase):
 
         return dict(
             testcases=["1 3\n", "2 1\n", "100\n2\n"],
-            expected='from random import randint\n\nn = randint(1, 100)\nprint(n)\n\nm = randint(1, 3)\nprint(m)\n'
+            expected='from random import randint, choice\n\nn = randint(1, 100)\nprint(n)\n\n'
+                     'm = randint(1, 3)\nprint(m)\n'
         )
 
     @example
@@ -47,7 +48,7 @@ class TestLanguageBehavior(unittest.TestCase):
 
         return dict(
             testcases=["1 4\n", "2 2\n", "100 -2\n"],
-            expected='from random import randint\n\nn, m = randint(1, 100), randint(-2, 4)\nprint(n, m)\n'
+            expected='from random import randint, choice\n\nn, m = randint(1, 100), randint(-2, 4)\nprint(n, m)\n'
         )
 
     @example
@@ -66,7 +67,7 @@ class TestLanguageBehavior(unittest.TestCase):
 
         return dict(
             testcases=["1 4\n2 2\n3 3\n", "2 2\n1 5\n-1 2\n"],
-            expected='from random import randint\n\nfor _ in range(3):'
+            expected='from random import randint, choice\n\nfor _ in range(3):'
                      '\n    n, m = randint(-1, 3), randint(2, 5)\n    print(n, m)\n'
         )
 
@@ -77,7 +78,7 @@ class TestLanguageBehavior(unittest.TestCase):
 
         return dict(
             testcases=['\n1\n2 3\n', '3\n1 2\n2 3\n4 5\n'],
-            expected='from random import randint\n\nn = randint(1, 3)\nprint(n)\n\n'
+            expected='from random import randint, choice\n\nn = randint(1, 3)\nprint(n)\n\n'
                      'for _ in range(n):\n    m, k = randint(1, 4), randint(2, 5)\n    print(m, k)\n'
         )
 
@@ -91,7 +92,7 @@ class TestLanguageBehavior(unittest.TestCase):
 
         return dict(
             testcases=['\n2 1 4\n8\n', '3 2 5\n1\n4\n'],
-            expected='from random import randint\n\nn, m, k = randint(2, 3), randint(1, 2), randint(4, 5)\n'
+            expected='from random import randint, choice\n\nn, m, k = randint(2, 3), randint(1, 2), randint(4, 5)\n'
                      'print(n, m, k)\n\nfor _ in range(m):\n    a = randint(1, 8)\n    print(a)\n'
         )
 
@@ -106,9 +107,19 @@ class TestLanguageBehavior(unittest.TestCase):
 
         return dict(
             testcases=['\n2\n3\n1 2 3\n4\n1 2 3 4\n', '1\n5\n1 2 3 4 5\n'],
-            expected='from random import randint\n\nn = randint(1, 2)\nprint(n)\n\n'
+            expected='from random import randint, choice\n\nn = randint(1, 2)\nprint(n)\n\n'
                      'for _ in range(n):\n    m = randint(3, 5)\n    print(m)\n    for _ in range(m):\n'
                      '        a = randint(1, 5)\n        print(a)\n'
+        )
+
+    @example
+    def test_string(self, pattern):
+        pattern.add(String())
+
+        return dict(
+            testcases=['\nxyaz\n', 'verde\n'],
+            expected='from random import randint, choice\n\n'
+                     's = \'\'.join([choice("adervxyz") for _ in range(randint(4, 5))])\nprint(s)\n'
         )
 
 

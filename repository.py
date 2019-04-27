@@ -1,4 +1,4 @@
-from elements import Integer, List, Integers
+from elements import Integer, List, Integers, String
 from language import code
 
 patterns = []
@@ -50,3 +50,10 @@ def head_2_list_2_list_1(pattern):
     a = pattern.add(Integers(2))
     pattern.add(List(a[1], Integers(2)))
     pattern.add(List(a[0], Integer()))
+
+
+@register
+def head_2_list_string_list_3(pattern):
+    a = pattern.add(Integers(2))
+    pattern.add(List(a[0], String()))
+    pattern.add(List(a[1], Integers(3)))

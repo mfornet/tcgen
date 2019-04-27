@@ -74,7 +74,7 @@ class Program:
 
     @property
     def header(self):
-        return "from random import randint\n"
+        return "from random import randint, choice\n"
 
     def generate(self):
 
