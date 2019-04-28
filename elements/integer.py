@@ -3,6 +3,15 @@ from parser import Parser, ParserError
 from utils import fix_return_string, rec_elements
 
 
+def get_value(obj):
+    if isinstance(obj, int):
+        return obj
+    elif isinstance(obj, Integer):
+        return obj._last_value
+    elif isinstance(obj, Operation):
+        return obj.value
+
+
 class Integer(AbstractElement):
     PREFERRED_NAMES = PREFERRED_NAMES
 
@@ -40,3 +49,15 @@ class Integer(AbstractElement):
     @rec_elements
     def elements(self):
         return []
+
+
+class Operation:
+    def __init__(self, left, op, right):
+        self.left = left
+        self.op = op
+        self.right = right
+
+    @property
+    def value(self):
+        lvalue = get_value(self.left)
+        rvalue = get_value(self.right)

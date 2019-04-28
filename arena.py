@@ -3,15 +3,23 @@ from language import code
 
 # Build pattern
 pattern = code()
-pattern.add(String())
+a = Integers(3)
+b = Integer()
+n = a[1]
+pattern.add(a)
+pattern.add(List(n, b))
 
 prog = pattern.compile()
 
 # Build testcases
+# ['\n2 1 4\n8\n', '3 2 5\n1\n4\n']
 testcases = """
-xyaz
+2 1 4
+8
 -
-verde
+3 2 5
+1
+4
 """
 
 tc = testcases.split('-\n')
@@ -21,8 +29,8 @@ prog.parse(tc)
 
 assert prog.ok
 
-# print(prog.generate())
-# exit(0)
+print(prog.generate())
+exit(0)
 
 # Print test
 print("""@example

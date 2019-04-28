@@ -1,4 +1,5 @@
-from repository import patterns
+from repository import PATTERNS
+import repository
 
 DEFAULT = """from random import randint
 
@@ -8,7 +9,7 @@ print(a)
 
 
 def find_pattern(testcase):
-    for prog_builder in patterns:
+    for prog_builder in PATTERNS:
         prog = prog_builder()
         if prog.parse(testcase):
             return prog

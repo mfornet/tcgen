@@ -1,5 +1,5 @@
 from elements.elements import AbstractElement
-from elements.integer import Integer
+from elements.integer import Integer, Operation, get_value
 from parser import Parser
 from utils import fix_return_string, fix_string, indent, rec_elements
 
@@ -11,17 +11,14 @@ class List(AbstractElement):
         if elem is None:
             elem = Integer()
 
-        assert isinstance(total, int) or isinstance(total, Integer)
+        assert isinstance(total, int) or isinstance(total, Integer) or isinstance(total, Operation)
 
         self._total = total
         self._token = elem
         self.name = None
 
     def _upper_limit(self):
-        if isinstance(self._total, int):
-            return self._total
-        else:
-            return self._total._last_value
+        return get_value(self._total)
 
     def _gen_total(self):
         if isinstance(self._total, int):

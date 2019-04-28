@@ -1,59 +1,41 @@
-from elements import Integer, List, Integers, String
-from language import code
+from elements import List, Integers, String
+from repository_meta import register_all
 
-patterns = []
+PATTERNS = []
 
 
-def register(builder):
+@register_all(head="1..=5")
+def integers(pattern, head):
     """
-    Convert pattern builder into compiled pattern.
-    Keep __name__.
+    integers({head})
     """
-
-    global patterns
-
-    def lazy():
-        pattern = code()
-        builder(pattern)
-        prog = pattern.compile()
-        prog.__name__ = builder.__name__
-        return prog
-
-    patterns.append(lazy)
+    pattern.add(Integers(head))
 
 
-@register
-def one_int(pattern):
-    pattern.add(Integer())
+@register_all(head="1..=3", index="0..head", body="1..=5")
+def list_head_index_body(pattern, head, index, body):
+    """
+    list_head_index_body({head},{index},{body})
+    """
+    a = pattern.add(Integers(head))
+    pattern.add(List(a[index], Integers(body)))
 
 
-@register
-def two_int(pattern):
-    pattern.add(Integer())
-    pattern.add(Integer())
-
-
-@register
-def simple_list(pattern):
-    a = pattern.add(Integer())
-    pattern.add(List(a, Integer()))
-
-
-@register
-def list_head_2_body_3(pattern):
+@register_all(block0="1..4", block1="1..4")
+def two_blocks_reversed_index(pattern, block0, block1):
+    """
+    two_blocks_reversed_index({block0},{block1})
+    """
     a = pattern.add(Integers(2))
-    pattern.add(List(a[0], Integers(3)))
+    pattern.add(List(a[1], Integers(block0)))
+    pattern.add(List(a[0], Integers(block1)))
 
 
-@register
-def head_2_list_2_list_1(pattern):
-    a = pattern.add(Integers(2))
-    pattern.add(List(a[1], Integers(2)))
-    pattern.add(List(a[0], Integer()))
-
-
-@register
-def head_2_list_string_list_3(pattern):
+@register_all(block_int="1..4")
+def two_blocks_string_integer(pattern, block_int):
+    """
+    two_blocks_string_integer({block_int})
+    """
     a = pattern.add(Integers(2))
     pattern.add(List(a[0], String()))
-    pattern.add(List(a[1], Integers(3)))
+    pattern.add(List(a[1], Integers(block_int)))
