@@ -4,7 +4,7 @@ from generate import find_pattern
 
 
 def run():
-    problem, tc = get_problem()
+    problem, tc = get_problem("839E.html")
 
     print("name:", problem)
     for xtc in tc:

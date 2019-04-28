@@ -1,5 +1,7 @@
 {
   "117A.html": "list_head_index_body(2,0,3)",
   "453C.html": "two_blocks_reversed_index(2,1)",
-  "587F.html": "two_blocks_string_integer(3)"
+  "587F.html": "two_blocks_string_integer(3)",
+  "909C.html": "list_head_string(1,0)",
+  "839E.html": "board_square(2)"
 }

@@ -26,8 +26,12 @@ def parse_testcase(name):
     return tc
 
 
+def codeforces_problems():
+    return listdir(CODEFORCES_PROBLEMS)
+
+
 def random_problem():
-    probs = listdir(CODEFORCES_PROBLEMS)
+    probs = codeforces_problems()
     prob = random.choice(probs)
     tc = parse_testcase(prob)
     return prob, tc

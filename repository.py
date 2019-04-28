@@ -1,4 +1,4 @@
-from elements import List, Integers, String
+from elements import List, Integers, String, Integer
 from repository_meta import register_all
 
 PATTERNS = []
@@ -30,3 +30,24 @@ def two_blocks_string_integer(block_int):
     yield h
     yield List(h[0], String())
     yield List(h[1], Integers(block_int))
+
+
+@register_all(head="1..=3", index="0..head")
+def list_head_string(head, index):
+    h = Integers(head)
+    yield h
+    yield List(h[index], String())
+
+
+@register_all(head="1..3")
+def board_square(head):
+    h = Integers(head)
+    yield h
+    yield List(h[0], List(h[0], Integer()))
+
+
+@register_all(head="2..=4")
+def board_rectangle(head):
+    h = Integers(head)
+    yield h
+    yield List(h[0], List(h[1], Integer()))

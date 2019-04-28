@@ -1,13 +1,30 @@
 Description of challenging inputs:
 
+## Default:
 
-## Operations
+604A.html
 
-Using operations to represet things like:
+This problem has a lot of Integers (no list).
+Try to match with `Integers` pattern if no pattern was found.
 
-given integer `n` read 2 * n integers
+## Constraints:
 
-## Conditionals
+956A.html
+
+n, m
+Create a board of size n x m
+
+n string of length `m`
+
+839E.html (print boards) two constraints
+
+## Operations:
+
+Using operations to represent things like:
+
+given integer `n` read 2 * n integers or (n - 1) for trees
+
+## Conditionals:
 
 398D.html
 
@@ -27,3 +44,11 @@ F 4
 C 2
 
 After C 1 integer | After O 1 integeer | After A 2 integer (how to solve this?)
+
+# Complex testcases:
+
+533A.html
+
+# Wrong
+
+(almost good) 691D.html (this can be fixed with proper separators).
