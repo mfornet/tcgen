@@ -17,7 +17,10 @@ def register(builder):
 
     def lazy():
         pattern = code()
-        builder(pattern)
+
+        for element in builder():
+            pattern.add(element)
+
         prog = pattern.compile()
         prog.__name__ = builder.__name__
         return prog
@@ -80,11 +83,13 @@ def register_all(**params):
     def proc(func):
         for param_variants in generate_all(ordered_params):
             new_func = partial(func, **param_variants)
-            new_func.__name__ = func.__doc__.format(**param_variants).strip("\t\n ")
+            new_func.__name__ = "{}({})".format(
+                func.__name__,
+                ','.join(str(v) for k, v in param_variants.items())
+            )
             register(new_func)
 
     return proc
-
 
 # def f(**kwargs):
 #     kwargs = list(kwargs.items())
