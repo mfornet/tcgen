@@ -1,7 +1,7 @@
 from functools import partial
 
-import repository
-from language import code
+from ._pattern import PATTERNS
+from .language import code
 
 VERBOSE = False
 
@@ -25,7 +25,7 @@ def register(builder):
         prog.__name__ = builder.__name__
         return prog
 
-    repository.PATTERNS.append(lazy)
+    PATTERNS.append(lazy)
 
 
 def dict_get(dic, key, default):
@@ -90,13 +90,3 @@ def register_all(**params):
             register(new_func)
 
     return proc
-
-# def f(**kwargs):
-#     kwargs = list(kwargs.items())
-#     for x in generate_all(kwargs):
-#         print(x)
-#
-#
-# if __name__ == '__main__':
-#     f(b='0..3', a="0..=b", c="2..4")
-#     f(b='2')

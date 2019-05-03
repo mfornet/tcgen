@@ -1,13 +1,9 @@
 # TCGen
 
 Test cases generator generator tool. The first sentence has no typo.
-Given a set of strings tries to find a pattern and create a code that produce random sample for such pattern.
+Given a set of strings create a code that randomly generate samples from the same distribution of such strings.
 It is highly focused for test cases in competitive programming problems but can be used/extended beyond this scope.
 
+## Usage
 
-## Roadmap
-
-+ Auto detect used separators.
-+ Make Python package (Installation and usage guide)
-+ Benchmark on codeforces.
-+ Read description of the problem to find extra constraints on the input.
+`python3 -m tcgen --path /path/to/testcases`

@@ -1,4 +1,4 @@
-from parser import Parser
+from ..parser import Parser
 
 PREFERRED_NAMES = ['n', 'm', 'k', 'a', 'b', 'c', 'd', 't', 'q']
 

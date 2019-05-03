@@ -1,0 +1,27 @@
+Metadata-Version: 1.1
+Name: tcgen
+Version: 0.1.0
+Summary: Code generator from sample data that generate data from similar distribution. Focused on test cases of competitive programming problems.
+Home-page: https://github.com/mfornet/tcgen
+Author: Marcelo Fornet
+Author-email: mfornet94@gmail.com
+License: MIT
+Description: # TCGen
+        
+        Test cases generator generator tool. The first sentence has no typo.
+        Given a set of strings create a code that randomly generate samples from the same distribution of such strings.
+        It is highly focused for test cases in competitive programming problems but can be used/extended beyond this scope.
+        
+        ## Usage
+        
+        ## Roadmap
+        
+        + Auto detect used separators.
+        + Make Python package (Installation and usage guide)
+        + Read description of the problem to find extra constraints on the input.
+        
+Keywords: program synthesis competitive programming acm icpc codeforces
+Platform: UNKNOWN
+Classifier: Environment :: Console
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.6

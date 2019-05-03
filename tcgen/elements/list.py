@@ -1,7 +1,7 @@
-from elements.elements import AbstractElement
-from elements.integer import Integer, Operation, get_value
-from parser import Parser
-from utils import fix_return_string, fix_string, indent, rec_elements
+from .elements import AbstractElement
+from .integer import Integer, Operation, get_value
+from ..parser import Parser
+from ..utils import fix_return_string, fix_string, indent, rec_elements
 
 
 class List(AbstractElement):

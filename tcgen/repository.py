@@ -1,7 +1,6 @@
-from elements import List, Integers, String, Integer
-from repository_meta import register_all
-
-PATTERNS = []
+from .elements import List, Integers, String, Integer
+from .repository_meta import register_all
+from ._pattern import PATTERNS
 
 
 @register_all(head="1..=5")

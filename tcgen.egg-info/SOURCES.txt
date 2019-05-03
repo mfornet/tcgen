@@ -1,0 +1,6 @@
+README.md
+setup.py
+tcgen.egg-info/PKG-INFO
+tcgen.egg-info/SOURCES.txt
+tcgen.egg-info/dependency_links.txt
+tcgen.egg-info/top_level.txt

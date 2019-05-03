@@ -1,6 +1,6 @@
-from elements.elements import AbstractElement, PREFERRED_NAMES
-from parser import Parser, ParserError
-from utils import fix_return_string, rec_elements
+from .elements import AbstractElement, PREFERRED_NAMES
+from ..parser import Parser, ParserError
+from ..utils import fix_return_string, rec_elements
 
 
 def get_value(obj):

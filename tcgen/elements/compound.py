@@ -1,6 +1,6 @@
-from elements.elements import AbstractElement
-from parser import Parser
-from utils import rec_elements
+from .elements import AbstractElement
+from ..parser import Parser
+from ..utils import rec_elements
 
 
 class Compound(AbstractElement):

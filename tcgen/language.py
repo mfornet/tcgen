@@ -1,6 +1,6 @@
-from elements import AbstractElement
-from parser import Parser
-from utils import names, element_iterator
+from .elements import AbstractElement
+from .parser import Parser
+from .utils import names, element_iterator
 
 
 class Code:

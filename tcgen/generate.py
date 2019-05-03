@@ -1,5 +1,4 @@
-from repository import PATTERNS
-import repository
+from .repository import PATTERNS
 
 DEFAULT = """from random import randint
 

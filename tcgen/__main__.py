@@ -2,12 +2,13 @@ import argparse
 from os import listdir
 from os.path import join
 
-from generate import generate
+from .generate import generate
 
 
 def get_args():
     parser = argparse.ArgumentParser()
 
+    parser.add_argument('--version', action='store_true', default=False)
     parser.add_argument('--path', dest='path', default=None)
     parser.add_argument('-v', '--verbose', action='store_true')
 
@@ -29,6 +30,7 @@ def get_testcases(args):
         return testcases
     else:
         print("Provide testcases path using --path")
+        exit(1)
 
 
 def run(args):
@@ -40,5 +42,10 @@ def run(args):
 
 if __name__ == '__main__':
     args = get_args()
+
+    if args.version:
+        from ._version import VERSION
+        print(VERSION)
+        exit(0)
 
     run(args)

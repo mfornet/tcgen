@@ -1,7 +1,7 @@
-from elements.elements import AbstractElement
-from elements.integer import Integer
-from parser import Parser
-from utils import fix_return_string, rec_elements
+from .elements import AbstractElement
+from .integer import Integer
+from ..parser import Parser
+from ..utils import fix_return_string, rec_elements
 
 
 class Integers(AbstractElement):
