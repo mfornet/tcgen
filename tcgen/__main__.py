@@ -9,7 +9,8 @@ def get_args():
     parser = argparse.ArgumentParser()
 
     parser.add_argument('--version', action='store_true', default=False)
-    parser.add_argument('--path', dest='path', default=None)
+    parser.add_argument('-p', '--path', dest='path', default=None)
+    parser.add_argument('-o', '--output', dest='output', default=None)
     parser.add_argument('-v', '--verbose', action='store_true')
 
     return parser.parse_args()
@@ -37,7 +38,11 @@ def run(args):
     testcases = get_testcases(args)
     code = generate(testcases)
 
-    print(code)
+    if args.output is None:
+        print(code)
+    else:
+        with open(args.output, 'w') as f:
+            f.write(code)
 
 
 if __name__ == '__main__':
