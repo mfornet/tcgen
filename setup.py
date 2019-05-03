@@ -9,7 +9,7 @@ setuptools.setup(
     version=VERSION,
     author='Marcelo Fornet',
     author_email='mfornet94@gmail.com',
-    description='Code generator from sample data that generate data from similar distribution. Focused on test cases of competitive programming problems.',
+    description='Program synthesis tool. Read a list of strings and create a generator that sample strings from the same distribution as input strings. Focused on test cases of competitive programming problems.',
     long_description=long_description,
     keywords='program synthesis competitive programming acm icpc codeforces',
     include_package_data=True,
