@@ -4,7 +4,7 @@ from os.path import join
 
 import bs4
 
-CODEFORCES_PROBLEMS = '/home/marx/Documents/projects/acm-icpc-research/data/codeforces/'
+CODEFORCES_PROBLEMS = '.'
 
 
 def parse_testcase(name):
